@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beeba Boys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       margin: 0;
       padding: 0;
@@ -12,47 +19,249 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #000000, #000000, #000000);
-      perspective: 1000px; /* Needed for 3D effect */
+      background: linear-gradient(135deg, #000000, #0a0a0a, #000000);
+      perspective: 1000px;
       overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    .flip-text {
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text-container {
+      position: relative;
+      display: flex;
+      transform-style: preserve-3d;
+    }
+
+    .text-half {
+      font-size: 7rem;
+      font-weight: 900;
+      color: #fff;
+      overflow: hidden;
+      line-height: 1;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .left-half {
+      transform-origin: 100% 50%;
+      animation: leftFlip 2s forwards;
+      animation-delay: 0.5s;
+      padding-right: 10px;
+    }
+
+    .right-half {
+      transform-origin: 0% 50%;
+      animation: rightFlip 2s forwards;
+      animation-delay: 0.5s;
+      padding-left: 10px;
+    }
+
+    @keyframes leftFlip {
+      0% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: rotateY(-90deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: rotateY(-180deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes rightFlip {
+      0% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: rotateY(90deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: rotateY(180deg);
+        opacity: 0;
+      }
+    }
+
+    .reveal-text {
+      position: absolute;
       font-size: 5rem;
       font-weight: bold;
       color: #fff;
-      transform-style: preserve-3d;
-      animation: flip 4s forwards;
+      opacity: 0;
+      transform: translateZ(100px) scale(0.8);
+      animation: reveal 2s forwards;
+      animation-delay: 2s;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
-    @keyframes flip {
+    @keyframes reveal {
       0% {
-        transform: rotateY(90deg);
         opacity: 0;
+        transform: translateZ(100px) scale(0.8);
       }
-      25% {
-        transform: rotateY(0deg);
+      50% {
         opacity: 1;
+        transform: translateZ(0) scale(1);
       }
-      75% {
-        transform: rotateY(0deg);
+      100% {
+        opacity: 1;
+        transform: translateZ(0) scale(1);
+      }
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
         opacity: 1;
       }
       100% {
-        transform: rotateY(-90deg);
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
         opacity: 0;
+      }
+    }
+
+    .loading-bar {
+      position: absolute;
+      bottom: 100px;
+      width: 300px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loading-progress {
+      height: 100%;
+      width: 0%;
+      background: white;
+      animation: loading 4s linear forwards;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes loading {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    .tagline {
+      position: absolute;
+      bottom: 130px;
+      color: white;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 3s;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0.7;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .text-half {
+        font-size: 4rem;
+      }
+      .reveal-text {
+        font-size: 3rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="flip-text">Beeba Boys</div>
+  <div class="container">
+    <div class="text-container">
+      <div class="text-half left-half">BEEBA</div>
+      <div class="text-half right-half">BOYS</div>
+    </div>
+    <div class="reveal-text">Beeba Boys</div>
+    <div class="particles" id="particles"></div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+    <div class="tagline">PREMIUM BARBER EXPERIENCE</div>
+  </div>
 
   <script>
+    // Create particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 100;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        particle.style.left = `${x}vw`;
+        particle.style.top = `${y}vh`;
+        
+        // Random size
+        const size = Math.random() * 3 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random animation delay
+        const delay = Math.random() * 5;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
     // Redirect to main website after 4 seconds
     setTimeout(() => {
-      window.location.href = "main.html"; // replace with your main page
+      window.location.href = "main.html";
     }, 4000);
+    
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+    });
   </script>
 </body>
 </html>
