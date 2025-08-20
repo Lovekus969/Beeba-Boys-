@@ -707,7 +707,7 @@
         
         <div class="footer-column">
           <h3>Contact Info</h3>
-          <p><i class="fas fa-map-marker-alt"></i> 123 Barber Street, City</p>
+           <p><i class="fas fa-map-marker-alt"></i> 11685 McVean Dr, Unit 50, Brampton</p>
           <p><i class="fas fa-phone"></i> (555) 123-4567</p>
           <p><i class="fas fa-envelope"></i> info@beebaboys.com</p>
           <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: Closed</p>
@@ -720,59 +720,65 @@
     </div>
   </footer>
 
+ 
   <script>
-    // Franchise data
+    // Franchise data with updated addresses
     const franchises = [
       {
-        name: "Downtown Location",
-        address: "123 Main St, Downtown",
+        name: "Beeba Boys McVean",
+        address: "11685 McVean Dr, Unit 50, L6P 0J9, Brampton",
         hours: "9AM-8PM",
         image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "Uptown Barbers",
-        address: "456 Oak Ave, Uptown",
+        name: "Beeba Boys Queen Street",
+        address: "14 Queen Street West, L6Y 1L9, Brampton",
         hours: "9AM-7PM",
         image: "https://images.unsplash.com/photo-1585747861815-39967fe3f3fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "Westside Grooming",
-        address: "789 Elm Blvd, Westside",
+        name: "Beeba Boys Downtown",
+        address: "Downtown Brampton Location",
         hours: "10AM-9PM",
         image: "https://images.unsplash.com/photo-1593705114312-a0ee03a3f7bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "East End Barbers",
-        address: "101 Pine Rd, East End",
+        name: "Beeba Boys Hwy 50",
+        address: "Highway 50 Location, Brampton",
         hours: "8AM-7PM",
         image: "https://images.unsplash.com/photo-1516979548246-49d9ee1afcf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "Northside Classic",
-        address: "202 Maple Ln, Northside",
+        name: "Beeba Boys Caledon",
+        address: "Caledon Location",
         hours: "9AM-8PM",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "South Central Cuts",
-        address: "303 Birch St, South Central",
+        name: "Beeba Boys Cambridge",
+        address: "Cambridge Location",
         hours: "10AM-8PM",
         image: "https://images.unsplash.com/photo-1530286780946-507d49d3a9c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "Riverside Barbers",
-        address: "404 Cedar Ave, Riverside",
+        name: "Beeba Boys Mississauga",
+        address: "Mississauga Location",
         hours: "9AM-7PM",
         image: "https://images.unsplash.com/photo-1503951914875-452162b0f3d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       },
       {
-        name: "Hillside Grooming",
-        address: "505 Spruce Dr, Hillside",
+        name: "Beeba Boys India",
+        address: "India Location",
         hours: "8AM-8PM",
         image: "https://images.unsplash.com/photo-1593705114312-a0ee03a3f7bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        name: "Beeba Boys Calgary",
+        address: "Calgary Location",
+        hours: "9AM-7PM",
+        image: "https://images.unsplash.com/photo-1516979548246-49d9ee1afcf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       }
     ];
-
     // DOM elements
     const franchisesGrid = document.querySelector('.franchises-grid');
     const menuBtn = document.querySelector('.mobile-menu-btn');
