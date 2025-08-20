@@ -780,6 +780,24 @@
         image: "https://images.unsplash.com/photo-1516979548246-49d9ee1afcf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
       }
     ];
+    function loadFranchises() {
+    const container = document.getElementById("franchise-list");
+    container.innerHTML = "";
+
+    franchises.forEach(franchise => {
+        const card = document.createElement("div");
+        card.classList.add("franchise-card");
+
+        card.innerHTML = `
+            <img src="${franchise.image}" alt="${franchise.name}" class="franchise-image">
+            <h3>${franchise.name}</h3>
+            <p><strong>📍 Address:</strong> ${franchise.address}</p>
+            <p><strong>⏰ Hours:</strong> ${franchise.hours}</p>
+        `;
+
+        container.appendChild(card);
+    });
+}
     // DOM elements
     const franchisesGrid = document.querySelector('.franchises-grid');
     const menuBtn = document.querySelector('.mobile-menu-btn');
