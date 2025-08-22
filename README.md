@@ -4,6 +4,8 @@ In Progress (Development phase)
 # Beeba Boys Website 💈
 
 A fully dynamic website for **Beeba Boys Haircut**, designed to handle multiple franchise locations, online bookings, and service management.  
+## work on the Booking features
+
 
 ## 🚀 Features i will use 
 - 📍 Multi-location support (8+ franchise stores)  
