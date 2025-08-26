@@ -1,5 +1,7 @@
 In Progress (Development phase)
 Working on the Galaxy and earth theames in the background 
+Extend timing for beebaboys displays to 5000ms
+
 
 # Beeba Boys Website 💈
 
